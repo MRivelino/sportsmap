@@ -159,16 +159,4 @@ if ($result_locais->num_rows > 0) {
     </div>
 </section>
 
-<section class="ftco-section" id="local">
-    <div class="container">
-        <div class="row justify-content-center pb-4">
-            <div class="col-md-12 heading-section text-center ftco-animate">
-                <h2 class="mb-4">Sabe de um bom local para praticar esportes?</h2>
-            </div>
-        </div>
-        <div class="text-center">
-            <a href="tela-login/login.php" class="btn btn-primary sugest text-center">Enviar sugestão</a>
-        </div>
-    </div>
-</section>
 

@@ -64,6 +64,7 @@ CREATE TABLE usuario (
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
     id_tipo_usuario INT,
+    foto VARCHAR(255) DEFAULT '../images/sem-foto-perfil.jpg',
     FOREIGN KEY (id_tipo_usuario) REFERENCES tipo_usuario(id_tipo_usuario)
 );
 
@@ -107,15 +108,6 @@ CREATE TABLE comentario (
     data_comentario DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE,
     FOREIGN KEY (id_local) REFERENCES tb_local(id_local) ON DELETE SET NULL
-);
-
-INSERT INTO comentario (texto, avaliacao, id_usuario, id_local, tipo_comentario)
-VALUES (
-    'Ótimo local para praticar esportes ao ar livre! Bem conservado e seguro.',
-    5,
-    1, -- ID do usuário que fez o comentário
-    2, -- ID do local que está sendo avaliado
-    'local'
 );
 
 INSERT INTO tb_bairros (nome, cidade, estado, cep)
@@ -232,10 +224,21 @@ VALUES ('Futsal no Ginásio', 'Jogo de futsal no ginásio poliesportivo', 7, 1, 
 INSERT INTO eventos (nome_evento, descricao, id_esporte, id_usuario, id_local, data, hora)
 VALUES ('Corrida no Parque', 'Corrida de rua no parque central', 8, 1, 2, '2025-05-05', '07:00:00');
 
+INSERT INTO comentario (texto, avaliacao, id_usuario, id_local, tipo_comentario)
+VALUES (
+    'Ótimo local para praticar esportes ao ar livre! Bem conservado e seguro.',
+    5,
+    1, -- ID do usuário que fez o comentário
+    2, -- ID do local que está sendo avaliado
+    'local'
+);
+
 CREATE TABLE avaliacoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
     qtd_estrela INT NOT NULL,
     mensagem VARCHAR(255) NULL,
-    created DATETIME NOT NULL,
-    modified DATETIME NULL
+    created DATETIME NOT NULL,	
+    modified DATETIME NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
 );

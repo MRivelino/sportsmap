@@ -41,31 +41,40 @@
   }
 ?>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">S
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
     .subheading {
         color: #00AAFF !important;
     }
 
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+    }
+
     .container-local {
       display: flex;
       justify-content: space-between;
-      margin: 2rem;
+      margin: 2rem auto;
       flex-wrap: wrap;
-      margin: 0 auto;
-      margin-top: 150px;
-      max-width: 90%;
+      max-width: 1200px;
+      margin-top: 10rem;
     }
 
     .image-container {
       flex: 1;
-      max-width: 40%;
+      max-width: 45%;
       margin-right: 2rem;
       margin-bottom: 2rem;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-size: cover;
+    background-position: center;
+    height: 350px;
     }
 
     .image-container img {
@@ -76,9 +85,9 @@
     .info-container {
       flex: 2;
       background-color: white;
-      padding: 2rem;
+      padding: 2.5rem;
       border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
       margin-bottom: 2rem;
       position: relative;
     }
@@ -97,15 +106,17 @@
     h2 {
       font-size: 1.5rem;
       color: #444;
-      margin-top: 1.5rem;
     }
 
     .other-section {
       margin-top: 2rem;
-      background-color: white;
-      padding: 2rem;
+      background-color: #fff;
+      padding: 3rem;
       border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      width: 95%;
+      margin: 0 auto;
+      margin-bottom: 5rem;
     }
 
     .map-container {
@@ -374,15 +385,6 @@
             Ver no Google Maps
         </button>
     </a>
-
-    <!-- Avaliações de Usuários -->
-    <h2>Avaliações de Usuários</h2>
-    <div class="ratings">
-      <?php
-      // Exemplo de exibição de avaliações:
-      echo '<div class="review"><p><strong>João Silva</strong> (5 estrelas)</p><p>"Ótimo local! A quadra está sempre bem conservada!"</p></div>';
-      ?>
-    </div>
   </div>
 
 <?php 

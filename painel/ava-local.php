@@ -161,9 +161,10 @@
               c.avaliacao AS qtd_estrela,
               c.texto    AS mensagem,
               u.nome     AS nome_usuario
+              u.foto     AS foto-usuario
             FROM comentario c
             INNER JOIN usuario u 
-              ON c.id_usuario = u.id_usuario
+              ON c.id_usuario = u.id_usuario, c.foto-usuario = u.foto-usuario
             WHERE c.tipo_comentario = 'local'
               AND c.id_local        = ?
             ORDER BY c.id_comentario DESC
@@ -196,7 +197,7 @@
                   </p>
                   <p class="mb-4"><?php echo $msg; ?></p>
                   <div class="d-flex align-items-center">
-                    <div class="user-img" style="background-image: url('images/person_1.jpg')"></div>
+                    <div class="user-img" style="background-image: url('<?= htmlspecialchars($user['foto']); ?>')"></div>
                     <div class="pl-3">
                       <p class="name"><?php echo $user; ?></p>
                     </div>

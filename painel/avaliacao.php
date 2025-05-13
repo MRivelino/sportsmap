@@ -153,7 +153,12 @@
             <div class="col-md-12">
                 <div class="carousel-testimony owl-carousel">
                     <?php
-                        $query_avaliacoes = "SELECT id, qtd_estrela, mensagem FROM avaliacoes ORDER BY id DESC";
+                        $query_avaliacoes = "
+                            SELECT a.id, a.qtd_estrela, a.mensagem, u.nome, u.foto
+                            FROM avaliacoes a
+                            INNER JOIN usuario u ON a.id_usuario = u.id_usuario, a.foto-usuario = u.foto-usuario,
+                            ORDER BY a.id DESC
+                        ";
                         $result_avaliacoes = $conn->prepare($query_avaliacoes);
                         $result_avaliacoes->execute();
 
@@ -176,10 +181,9 @@
                                     </p>
                                     <p class="mb-4"><?php echo htmlspecialchars($mensagem); ?></p>
                                     <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url('images/person_1.jpg')"></div>
+                                        <div class="user-img" style="background-image: url('<?= htmlspecialchars($user['foto']); ?>')"></div>
                                         <div class="pl-3">
-                                            <p class="name">Avaliação: <?php echo $id; ?></p>
-                                            <span class="position">Marketing Manager</span>
+                                            <p class="name"><?php echo htmlspecialchars($nome); ?></p>
                                         </div>
                                     </div>
                                 </div>
