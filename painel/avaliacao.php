@@ -156,7 +156,7 @@
                         $query_avaliacoes = "
                             SELECT a.id, a.qtd_estrela, a.mensagem, u.nome, u.foto
                             FROM avaliacoes a
-                            INNER JOIN usuario u ON a.id_usuario = u.id_usuario, a.foto-usuario = u.foto-usuario,
+                            INNER JOIN usuario u ON a.id_usuario = u.id_usuario
                             ORDER BY a.id DESC
                         ";
                         $result_avaliacoes = $conn->prepare($query_avaliacoes);
@@ -181,7 +181,7 @@
                                     </p>
                                     <p class="mb-4"><?php echo htmlspecialchars($mensagem); ?></p>
                                     <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url('<?= htmlspecialchars($user['foto']); ?>')"></div>
+                                        <div class="user-img" style="background-image: url('<?= htmlspecialchars($foto) ?>')"></div>
                                         <div class="pl-3">
                                             <p class="name"><?php echo htmlspecialchars($nome); ?></p>
                                         </div>
